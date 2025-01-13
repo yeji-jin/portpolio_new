@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("./fonts/NotoSansKR-Light.ttf");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("./fonts/NotoSansKR-Regular.ttf");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("./fonts/NotoSansKR-Medium.ttf");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "NotoSansKR";
+  src: url("./fonts/NotoSansKR-Bold.ttf");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  --primary_c: #fff;
+  --secondary_c: #222;
+}
+* {
+  box-sizing: border-box;
+  word-break: keep-all;
+}
+img {
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  font-family: "NotoSansKR", sans-serif;
+  font-weight: 400;
+  background: var(--primary_c);
+  color: var(--secondary_c);
+}
+#root {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1380px;
+  padding: 0 50px;
+  background: var(--primary_c);
+}
