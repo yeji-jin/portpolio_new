@@ -10,7 +10,7 @@ const TitleText = styled.span`
 export default function Main() {
   const MainTitle = "Main";
   const MainTitleRef = useRef();
-  console.log("MainTitleRef.current", MainTitleRef.current);
+  console.log("MainTitleRef.current.", MainTitleRef.current);
 
   useLayoutEffect(() => {
     gsap.to(MainTitleRef.current.children, {
