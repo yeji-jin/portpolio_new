@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SubTitle, MainTitle, Description, DiagramCircle, DiagramSqueare } from "@/styled/CommonStyle.js";
+import { SubTitle, MainTitle, Description, DiagramCircle, DiagramSqueare } from "@/styled/CommonStyles.js";
 
 const GuideWrapper = styled.ul`
   display: grid;

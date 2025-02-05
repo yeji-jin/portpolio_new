@@ -25,6 +25,7 @@
 :root {
   --primary_c: #fff;
   --secondary_c: #222;
+  --header_h: 64px;
 }
 * {
   box-sizing: border-box;

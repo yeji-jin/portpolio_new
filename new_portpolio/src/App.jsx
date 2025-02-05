@@ -3,8 +3,12 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import Home from "./pages/Home";
+import Experience from "./pages/Experience";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Header from "./components/common/Header";
 import Notfound from "./pages/Notfound";
+import Footer from "@/components/common/Footer";
 import Button from "./components/common/Button";
 import StyleGuide from "@/pages/StyleGuide";
 import "./App.css";
@@ -36,19 +40,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home triggerAnimation={triggerAnimation} setTriggerAnimation={setTriggerAnimation} setIsOverflowHidden={setIsOverflowHidden} />} />
           <Route path="/guide" element={<StyleGuide />} />
-          {/* <Route path="/end" element={<End webtoons={data.webtoons} />} />
-                  <Route path="/gift" element={<Gift />} />
-                  <Route path="/menu" element={<Menu />} />
-                  <Route path="/mypick" element={<MyPage />}>
-                    <Route path="recent" element={<TabRecent history={data.history} />} />
-                    <Route path="like" element={<TabMyPick />} />
-                    <Route path="own" element={<TabMyOwn OwnedList={data.OwnedList} />} />
-                  </Route>
-                  <Route path="/detail/:id" element={<Detail />} />
-                  <Route path="/search" element={<Search />} />*/}
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       </main>
+      {/* footer */}
+      <Footer />
     </>
   );
 }

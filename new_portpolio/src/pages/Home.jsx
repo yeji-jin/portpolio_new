@@ -3,10 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styled from "styled-components";
+import { FaPhone } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import { CommonComponents } from "@/App";
-import { SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox } from "@/styled/CommonStyle.js";
+import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex } from "@/styled/CommonStyles";
 import RoundLayout from "@/components/RoundLayout";
-import Footer from "@/components/common/Footer";
+import BlockBox from "@/components/BlockBox";
 gsap.registerPlugin(ScrollTrigger);
 
 const MainTitleWrapper = styled.div`
@@ -31,7 +33,6 @@ const BtnWrapper = styled.div`
   gap: ${(props) => `${props.$gap}px` || 0};
 `;
 const SectionDesc = styled.section`
-  padding: 120px 60px;
   min-height: 50vh;
   text-align: center;
   font-size: 32px;
@@ -42,7 +43,6 @@ const SectionDesc = styled.section`
 `;
 const SectionProfile = styled.section`
   position: relative;
-  padding: 120px 60px;
   min-height: 200vh;
 `;
 const CardContainer = styled.div`
@@ -233,14 +233,14 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
     ScrollTrigger.create({
       trigger: RoundLayoutRef.current,
       start: "top center",
-      end: "bottom center",
+      end: "bottom bottom",
       animation: gsap.from(RoundLayoutRef.current, {
         ease: "none",
         rotation: 360,
         scale: 1.5,
       }),
       scrub: true,
-      markers: true,
+      // markers: true,
     });
   }, []);
 
@@ -268,102 +268,134 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
       </MainTitleWrapper>
       {/*  SectionDesc */}
       <SectionDesc ref={SectionDescRef}>
-        진지한글진지한글진지한글진지한글
-        <br />
-        진지한글진지한글진지한글진지한글
-        <br />
-        진지한글진지한글진지한글진지한글
-        <br />
-        진지한글진지한글진지한글진지한글
+        <CommonInner>
+          진지한글진지한글진지한글진지한글
+          <br />
+          진지한글진지한글진지한글진지한글
+          <br />
+          진지한글진지한글진지한글진지한글
+          <br />
+          진지한글진지한글진지한글진지한글
+        </CommonInner>
       </SectionDesc>
       {/* SectionProfile */}
       <SectionProfile>
-        <SubTitle $margin="20px" $padding="10px">
-          what we offer
-        </SubTitle>
-        <MainTitle>&lt;Our services/&gt;</MainTitle>
-        <Description>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
-          pariatur totam facilis laboriosam earum tenetur?
-        </Description>
-        <CardContainer>
-          <DiagramCircle $shape="round" $position="absolute" $top="20px" $left="20px" />
-          <DiagramCircle $type="orange" $rotate />
-          <DiagramCircle $type="blue" />
-          <DiagramCircle $type="green" />
-          <DiagramCircle $rotate />
-          <DiagramCircle $type="pink" $rotate $position="absolute" $top="40px" $right="45%" />
-          {/* <DiagramSqueare />
-          <DiagramSqueare /> */}
-
-          <RoundLayout ref={RoundLayoutRef} />
-          <InfoBox>
-            <SectionTitle>SectionTitle</SectionTitle>
-          </InfoBox>
-          <ul>
-            <li>
-              <h5>card title</h5>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <h5>card title</h5>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <h5>card title</h5>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-            <li>
-              <h5>card title</h5>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-            </li>
-          </ul>
-        </CardContainer>
+        <CommonInner>
+          <SubTitle $margin="20px" $padding="10px">
+            what we offer
+          </SubTitle>
+          <MainTitle>&lt;Our services/&gt;</MainTitle>
+          <Description>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
+            pariatur totam facilis laboriosam earum tenetur?
+          </Description>
+          <CardContainer>
+            <DiagramCircle $shape="round" $position="absolute" $top="20px" $left="20px" />
+            <DiagramCircle $type="orange" $rotate />
+            <DiagramCircle $type="blue" />
+            <DiagramCircle $type="green" />
+            <DiagramCircle $rotate />
+            <DiagramCircle $type="pink" $rotate $position="absolute" $top="40px" $right="45%" />
+            <RoundLayout ref={RoundLayoutRef} />
+            <InfoBox>
+              <SectionTitle>SectionTitle</SectionTitle>
+            </InfoBox>
+            <ul>
+              <li>
+                <h5>card title</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              </li>
+              <li>
+                <h5>card title</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              </li>
+              <li>
+                <h5>card title</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              </li>
+              <li>
+                <h5>card title</h5>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              </li>
+            </ul>
+          </CardContainer>
+        </CommonInner>
       </SectionProfile>
       <SectionProfile>
-        <SubTitle>what we offer</SubTitle>
-        <MainTitle>&lt;Our services/&gt;</MainTitle>
-        <Description>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
-          pariatur totam facilis laboriosam earum tenetur?
-        </Description>
-        <LayoutImageWrapper>
-          <div>
-            <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_01.jpg" alt="" />
-            <SubTitle>what we offer</SubTitle>
-            <Description>
-              어쩌구 저쩌궁 <br />
-              어쩌구 저쩌궁 <br />
-            </Description>
-          </div>
-          <div>
-            <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_02.jpg" alt="" />
-            <SubTitle>what we offer</SubTitle>
-            <Description $margin="20px" $padding="100px">
-              어쩌구 저쩌궁 <br />
-              어쩌구 저쩌궁 <br />
-            </Description>
-          </div>
-        </LayoutImageWrapper>
+        <CommonInner>
+          <SubTitle>what we offer</SubTitle>
+          <MainTitle>&lt;Our services/&gt;</MainTitle>
+          <Description>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
+            pariatur totam facilis laboriosam earum tenetur?
+          </Description>
+          <LayoutImageWrapper>
+            <div>
+              <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_01.jpg" alt="" />
+              <SubTitle>what we offer</SubTitle>
+              <Description>
+                어쩌구 저쩌궁 <br />
+                어쩌구 저쩌궁 <br />
+              </Description>
+            </div>
+            <div>
+              <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_02.jpg" alt="" />
+              <SubTitle>what we offer</SubTitle>
+              <Description $margin="20px" $padding="100px">
+                어쩌구 저쩌궁 <br />
+                어쩌구 저쩌궁 <br />
+              </Description>
+            </div>
+          </LayoutImageWrapper>
+          <BlockBox title="boxTitle" />
+        </CommonInner>
       </SectionProfile>
-      {/* tmp */}
+
+      {/* section contact */}
+      <CommonInner>
+        <MainTitle as="h3" $align="center">
+          지금바로
+          <br />
+          롸인나우
+          <br />
+          전화갈겨
+          <br />
+        </MainTitle>
+        <img src="https://static.toss.im/3d/tossmobile-benefit-2.png" alt="" />
+        <LayoutFlex $gap={30}>
+          <Button>
+            <a href="mailto:dpwl322@naver.com">
+              <MdEmail />
+              <span>E-mail</span>
+            </a>
+          </Button>
+          <Button>
+            <a href="tel:010-0000-0000">
+              <FaPhone />
+              <span>Call</span>
+            </a>
+          </Button>
+        </LayoutFlex>
+      </CommonInner>
+      {/* section tmp */}
       <section>
         <div>
           <img src="https://static.toss.im/assets/homepage/newtossim/section4_device.jpg" alt="" />
         </div>
-        <h1>
-          AAA
-          <br />
-          BBB
-          <br />
-          CCC
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto alias in. Delectus quasi laudantium non nesciunt, est accusantium harum iste ipsa reprehenderit
-          ut aliquam quae impedit, magnam optio sunt.
-        </p>
+        <CommonInner>
+          <h1>
+            AAA
+            <br />
+            BBB
+            <br />
+            CCC
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto alias in. Delectus quasi laudantium non nesciunt, est accusantium harum iste ipsa
+            reprehenderit ut aliquam quae impedit, magnam optio sunt.
+          </p>
+        </CommonInner>
       </section>
-      <Footer />
     </>
   );
 }

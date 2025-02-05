@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { setSpacing } from "./styleUtils";
 
-export const FlexLayout = styled.div`
+export const LayoutFlex = styled.div`
   display: flex;
+  flex-direction: ${(props) => props.$direction || "row"};
   justify-content: ${(props) => props.justifyContent || "center"};
   align-items: ${(props) => props.alignItems || "center"};
-  ${(props) => props.gap && `gap: ${props.gap};`}/* @media (max-width: 490px) {
-    padding: 0 4px;
-    grid-template-columns: repeat(3, 1fr);
-  } */
+  ${(props) => props.$gap && `gap: ${props.$gap}px;`}
+`;
+export const CommonInner = styled.div`
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 120px 60px;
 `;
 export const SubTitle = styled.h5`
   ${(props) => setSpacing(props)}
@@ -19,7 +22,9 @@ export const SubTitle = styled.h5`
 `;
 export const MainTitle = styled.h2`
   ${(props) => setSpacing(props)}
+  text-align: ${(props) => props.$align || "left"};
   font-size: 64px;
+  line-height: 1.4;
   color: #151515;
   font-weight: 700;
 `;

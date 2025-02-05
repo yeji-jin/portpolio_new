@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const getButtonStatus = ($status) => {
   switch ($status) {
@@ -32,7 +33,8 @@ const StyledButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
+  /* padding: 12px 24px; */
+  padding: ${({ $isLink }) => ($isLink ? "0" : "12px 24px")}; /* children이 Link일 때 padding을 0으로 설정 */
   min-width: 44px;
   min-height: 44px;
   font-size: 18px;
@@ -57,12 +59,21 @@ const StyledButton = styled.div`
   &:hover {
     opacity: 0.8;
   }
+  > a {
+    display: flex;
+    padding: 12px 24px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Button = ({ children, text, onClick, ...styleProps }) => {
+  const isLink = children && children.type === Link; // children이 Link인지 확인
   return (
     <>
-      <StyledButton onClick={onClick} {...styleProps}>
+      <StyledButton onClick={onClick} $isLink={isLink} {...styleProps}>
         {children}
         {text}
       </StyledButton>
