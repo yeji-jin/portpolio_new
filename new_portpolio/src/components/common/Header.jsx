@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import styled from "styled-components";
 import { CommonComponents } from "@/App";
 import { FaBars, FaFaceKissBeam, FaArrowRightFromBracket } from "react-icons/fa6";
+import { TiHome } from "react-icons/ti";
 
 const HeaderWrapper = styled.header`
   position: fixed;
@@ -141,7 +142,7 @@ export default function Header({ playIntroAni, setIsOverflowHidden }) {
         <div className="header_left">
           <Button onClick={playIntroAni}>
             <Link to="/">
-              <FaFaceKissBeam />
+              <TiHome />
             </Link>
           </Button>
         </div>

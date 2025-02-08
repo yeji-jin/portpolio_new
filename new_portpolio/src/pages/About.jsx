@@ -28,11 +28,11 @@ const IpadFrame = styled.div`
 `;
 const StorySection = styled.div`
   position: relative;
-  /* height: 100vh; */
+  height: 100vh;
 `;
 const StoryCard = styled.div`
-  /* position: absolute;
-  inset: 0; */
+  position: absolute;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,11 +52,11 @@ export default function About() {
   const cards = [
     {
       text: "블라블라",
-      bg: "orange",
+      bg: "green",
     },
     {
       text: "블라블라2",
-      bg: "red",
+      bg: "green",
     },
     {
       text: "블라블라3",
@@ -64,7 +64,7 @@ export default function About() {
     },
     {
       text: "블라블라4",
-      bg: "blue",
+      bg: "green",
     },
   ];
 
@@ -97,38 +97,75 @@ export default function About() {
     });
   }, []);
 
+  // useEffect(() => {
+  //   storyCards.current.forEach((card, i) => {
+  //     ScrollTrigger.create({
+  //       trigger: card,
+  //       start: "top top",
+  //       end: "+=" + window.innerHeight,
+  //       // end: "+=" + window.innerHeight * storyCards.current.length,
+  //       scrub: true,
+  //       pin: true,
+  //       pinSpacing: true,
+  //       animation: gsap
+  //         .timeline()
+  //         .fromTo(
+  //           card,
+  //           {
+  //             // y: "100%",
+  //             opacity: 0,
+  //           },
+  //           {
+  //             // y: 0,
+  //             opacity: 1,
+  //           }
+  //         )
+  //         .fromTo(
+  //           card.querySelector("span"),
+  //           {
+  //             opacity: 0,
+  //           },
+  //           {
+  //             opacity: 1,
+  //           }
+  //         ),
+  //       // markers: true,
+  //     });
+  //   });
+  // }, []);
   useEffect(() => {
-    storyCards.current.forEach((card, i) => {
-      ScrollTrigger.create({
-        trigger: card,
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: StoryRef.current,
         start: "top top",
-        end: "+=" + window.innerHeight,
-        // end: "+=" + window.innerHeight * storyCards.current.length,
+        end: "+=" + window.innerHeight * 4 * (storyCards.current.length - 1),
         scrub: true,
         pin: true,
-        pinSpacing: true,
-        animation: gsap
-          .timeline()
-          .fromTo(
-            card,
-            {
-              opacity: 0,
-            },
-            {
-              opacity: 1,
-            }
-          )
-          .fromTo(
-            card.querySelector("span"),
-            {
-              opacity: 0,
-            },
-            {
-              opacity: 1,
-            }
-          ),
-        // markers: true,
-      });
+      },
+    });
+
+    storyCards.current.forEach((card, i) => {
+      const duration = 1;
+      tl.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration,
+        }
+      ).to(
+        card,
+        {
+          opacity: 0,
+          y: -100,
+          duration,
+        },
+        "-=0.5"
+      );
     });
   }, []);
 
@@ -137,7 +174,6 @@ export default function About() {
       <PageTrantition
         text="about"
         onComplete={() => {
-          console.log("🚀 PageTrantition 완료 → ScrollTrigger.refresh()");
           ScrollTrigger.refresh();
         }}
       />

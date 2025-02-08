@@ -347,7 +347,11 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
               </Description>
             </div>
           </LayoutImageWrapper>
-          <BlockBox title="boxTitle" />
+          <MainTitle>&lt;Career/&gt;</MainTitle>
+          <BlockBox>
+            <div>글라이드</div>
+            <div>패스트파이브</div>
+          </BlockBox>
         </CommonInner>
       </SectionProfile>
 

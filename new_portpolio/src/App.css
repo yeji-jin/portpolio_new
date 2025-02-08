@@ -38,10 +38,17 @@ a {
   text-decoration: none;
   color: inherit;
 }
+button {
+  border: 0;
+  cursor: pointer;
+}
 html,
 body,
 #root {
   height: 100%;
+}
+main {
+  min-height: calc(100% - 196px);
 }
 body {
   font-family: "NotoSansKR", sans-serif;

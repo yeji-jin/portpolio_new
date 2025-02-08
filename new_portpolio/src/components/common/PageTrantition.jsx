@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 const PageAniWrapper = styled.div`
   overflow: hidden;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -15,11 +17,11 @@ const PageAniWrapper = styled.div`
   z-index: 9999;
 `;
 const PageNameWrapper = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
   > h1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     font-size: 6vw;
     opacity: 0;
@@ -43,13 +45,14 @@ export default function PageTrantition({ text, $bg, onComplete }) {
       .fromTo(
         PageNameRef.current,
         {
-          y: "-60%",
+          y: "-50%",
           opacity: 0,
           delay: 0.5,
         },
         {
           y: "-100%",
           opacity: 1,
+          // duration: 30,
         }
       )
       .to(PageNameRef.current, {
