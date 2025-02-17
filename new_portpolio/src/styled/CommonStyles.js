@@ -9,6 +9,7 @@ export const LayoutFlex = styled.div`
   ${(props) => props.$gap && `gap: ${props.$gap}px;`}
 `;
 export const CommonInner = styled.div`
+  position: relative;
   margin: 0 auto;
   max-width: 1024px;
   padding: 120px 60px;
@@ -36,7 +37,8 @@ export const SectionTitle = styled.h3`
 `;
 export const Description = styled.p`
   ${({ $margin, $padding }) => setSpacing({ $margin, $padding })}
-  font-size: 24px;
+  font-size: 18px;
+  line-height: 1.7;
   color: #5a5a5a;
 `;
 export const DiagramCircle = styled.div`
@@ -97,4 +99,8 @@ export const InfoBox = styled.div`
   border-radius: 16px;
   box-shadow: 0 1.4rem 3rem rgba(160, 160, 160, 0.3);
   backdrop-filter: blur(4px);
+`;
+export const Divider = styled.div`
+  ${(props) => setSpacing(props)}
+  border-top: 1px solid #eee;
 `;

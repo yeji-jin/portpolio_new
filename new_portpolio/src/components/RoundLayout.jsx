@@ -36,20 +36,21 @@ const Container = styled.div`
   margin: 0 auto;
   min-width: 200px;
   min-height: 200px;
-  width: 50vw; /* 반응형 너비 설정 */
+  width: 50vw;
   height: 50vw;
-  max-width: 500px; /* 최대 크기 제한 */
+  max-width: 500px;
   max-height: 500px;
   border-radius: 50%;
   border: 2px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform-origin: center center;
 `;
 
 const CircleItem = styled.img`
   position: absolute;
-  width: 12%; /* 반응형 이미지 크기 */
+  width: 12%;
   height: auto;
   border-radius: 50%;
   transform: ${({ $angle }) => `rotate(${$angle}deg) translate(clamp(100px, 25vw, 250px)) rotate(-${$angle}deg)`};

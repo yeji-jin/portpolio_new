@@ -6,12 +6,12 @@ import styled from "styled-components";
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { CommonComponents } from "@/App";
-import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex } from "@/styled/CommonStyles";
+import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex, Divider } from "@/styled/CommonStyles";
 import RoundLayout from "@/components/RoundLayout";
 import BlockBox from "@/components/BlockBox";
 gsap.registerPlugin(ScrollTrigger);
 
-const MainTitleWrapper = styled.div`
+const MainVisualWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,11 +19,18 @@ const MainTitleWrapper = styled.div`
   align-items: center;
   height: 100vh;
 `;
+const VisualBottomBox = styled.div`
+  p {
+    margin: 40px auto;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+  }
+`;
 const TitleText = styled.span`
   display: inline-block;
   font-size: 16vw;
   font-weight: 700;
-  border: 1px solid red;
   transform: scale(2);
 `;
 const BtnWrapper = styled.div`
@@ -31,6 +38,9 @@ const BtnWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: ${(props) => `${props.$gap}px` || 0};
+`;
+const SectionWrapper = styled.div`
+  position: relative;
 `;
 const SectionDesc = styled.section`
   min-height: 50vh;
@@ -47,6 +57,7 @@ const SectionProfile = styled.section`
 `;
 const CardContainer = styled.div`
   ul {
+    margin-top: 120px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -65,12 +76,19 @@ const CardContainer = styled.div`
 `;
 const LayoutImageWrapper = styled.div`
   display: flex;
+  align-items: flex-start;
   gap: 6vw;
   div:nth-child(1) {
     flex: 2;
   }
   div:nth-child(2) {
     flex: 1;
+    height: 450px;
+  }
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 `;
 
@@ -78,7 +96,7 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
   const { Button } = CommonComponents;
   const mainTitle = "Hey, I'm YEJI ;)";
   const MainTitleRef = useRef();
-  const MainDescRef = useRef();
+  const VisualDescRef = useRef();
   const SectionDescRef = useRef();
   const RoundLayoutRef = useRef();
   const location = useLocation();
@@ -128,15 +146,8 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
         },
         "-=0.25"
       )
-      .to(
-        MainTitleRef.current.children,
-        {
-          background: "pink",
-        },
-        "<"
-      )
       .fromTo(
-        MainDescRef.current,
+        VisualDescRef.current,
         {
           yPercent: 50,
           opacity: 0,
@@ -155,36 +166,6 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
           scale: 1,
         }
       );
-    // tl.from(MainTitleRef.current.children, {
-    //   yPercent: 150,
-    //   stagger: 0.2,
-    //   // duration: 0.1,
-    // })
-    //   .to(
-    //     MainTitleRef.current.children,
-    //     {
-    //       scale: 1,
-    //     },
-    //     "-=0.25"
-    //   )
-    //   .to(
-    //     MainTitleRef.current.children,
-    //     {
-    //       background: "pink",
-    //     },
-    //     "<"
-    //   )
-    //   .from(MainDescRef.current, {
-    //     yPercent: 50,
-    //     opacity: 0,
-    //   })
-    //   .from(
-    //     ".header_left, .header_right",
-    //     {
-    //       scale: 0,
-    //     },
-    //     "<"
-    //   );
   };
   const slideDown = () => {
     setIsOverflowHidden(false);
@@ -237,7 +218,8 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
       animation: gsap.from(RoundLayoutRef.current, {
         ease: "none",
         rotation: 360,
-        scale: 1.5,
+        opacity: 0,
+        scale: 1.2,
       }),
       scrub: true,
       // markers: true,
@@ -246,75 +228,113 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
 
   return (
     <>
-      {/* MainTitleWrapper */}
-      <MainTitleWrapper>
+      {/* MainVisualWrapper */}
+      <MainVisualWrapper>
         <div ref={MainTitleRef} className="title_contianer">
           {mainTitle.split("").map((text, i) => (
             <TitleText key={i}>{text}</TitleText>
           ))}
         </div>
-        <div ref={MainDescRef}>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <VisualBottomBox ref={VisualDescRef}>
+          <p>Nice to meet you</p>
           <BtnWrapper $gap={20}>
-            <Button onClick={slideDown}>
-              {/* <Link to="/profile">Profile</Link> */}
-              Profile
-            </Button>
+            <Button onClick={slideDown}>Profile</Button>
             <Button $status="sub">
               <Link to="/work">Work</Link>
             </Button>
           </BtnWrapper>
-        </div>
-      </MainTitleWrapper>
+        </VisualBottomBox>
+      </MainVisualWrapper>
       {/*  SectionDesc */}
       <SectionDesc ref={SectionDescRef}>
         <CommonInner>
-          진지한글진지한글진지한글진지한글
+          사용자의 경험을 고민하며
           <br />
-          진지한글진지한글진지한글진지한글
+          디자인을 코드로 완성하는
           <br />
-          진지한글진지한글진지한글진지한글
-          <br />
-          진지한글진지한글진지한글진지한글
+          UI개발자 진예지입니다.
         </CommonInner>
       </SectionDesc>
       {/* SectionProfile */}
       <SectionProfile>
         <CommonInner>
-          <SubTitle $margin="20px" $padding="10px">
-            what we offer
-          </SubTitle>
-          <MainTitle>&lt;Our services/&gt;</MainTitle>
-          <Description>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
-            pariatur totam facilis laboriosam earum tenetur?
+          {/* section :: career */}
+          <SectionWrapper>
+            <SubTitle $margin="0 0 4px">Experience &amp; Growth</SubTitle>
+            <MainTitle>&lt;Career/&gt;</MainTitle>
+            <DiagramCircle $shape="round" $position="absolute" $top="-40px" $right="40px" />
+            <DiagramCircle $shape="square" $position="absolute" $top="26px" $right="172px" $type="pink" $rotate />
+            <BlockBox $margin="60px 0">
+              <dl>
+                <dt>글라이드</dt>
+                <dd>
+                  * 신규 서비스 페이지 제작 <br />
+                  * 공통컴포넌트 제작 <br />
+                  * 프로모션 퍼블리싱 및 개발
+                  <br />
+                  <Divider $margin="20px 0" />
+                  <p>
+                    <span className="division">&#91;Skill&#93;</span>
+                    react.js , vue.js , html, css3, tailwind css , vanila JS , git
+                  </p>
+                  <p>
+                    <span className="division">&#91;Ect&#93;</span>
+                    레드마인 , Figma, Zepline
+                  </p>
+                </dd>
+              </dl>
+            </BlockBox>
+            <BlockBox>
+              <dl>
+                <dt>패스트파이브</dt>
+                <dd>
+                  * 신규 서비스 페이지 제작 <br />
+                  * 브랜딩 / 프로모션 퍼블리싱 및 개발 <br />
+                  * 자사 사이트 구축 및 운영 관리 <br />
+                  <br />
+                  <Divider $margin="20px 0" />
+                  <p>
+                    <span className="division">&#91;Skill&#93;</span>
+                    html, css3, php, vanila JS, j-query, GSAP
+                  </p>
+                  <p>
+                    <span className="division">&#91;Ect&#93;</span>
+                    Figma, PPT, PDF , Notion, Slack
+                  </p>
+                </dd>
+              </dl>
+            </BlockBox>
+          </SectionWrapper>
+        </CommonInner>
+        <Divider />
+        {/* section :: i can */}
+        <CommonInner>
+          <SubTitle $margin="0 0 4px">What I can do</SubTitle>
+          <MainTitle>&lt;Can Do/&gt;</MainTitle>
+          <Description $margin="60px 0">
+            React와 Vue를 활용해 확장 가능한 컴포넌트를 개발하고, 브랜딩 및 프로모션 페이지를 반응형으로 퍼블리싱한 경험이 있습니다
+            <br />
+            또한, 자사 사이트를 구축하고 운영하며, 디자인과 기획을 반영한 최적의 웹 경험을 제공해왔습니다
+            <br />
+            원활한 협업을 통해 재사용성과 사용자 경험을 고려한 웹 솔루션을 구현하는 것을 목표로 합니다
           </Description>
           <CardContainer>
-            <DiagramCircle $shape="round" $position="absolute" $top="20px" $left="20px" />
-            <DiagramCircle $type="orange" $rotate />
-            <DiagramCircle $type="blue" />
-            <DiagramCircle $type="green" />
-            <DiagramCircle $rotate />
-            <DiagramCircle $type="pink" $rotate $position="absolute" $top="40px" $right="45%" />
             <RoundLayout ref={RoundLayoutRef} />
-            <InfoBox>
-              <SectionTitle>SectionTitle</SectionTitle>
-            </InfoBox>
             <ul>
               <li>
-                <h5>card title</h5>
+                <h5>주요업무</h5>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
               </li>
               <li>
-                <h5>card title</h5>
+                <h5>주요업무</h5>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
               </li>
               <li>
-                <h5>card title</h5>
+                <h5>주요업무</h5>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
               </li>
               <li>
-                <h5>card title</h5>
+                <h5>주요업무</h5>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
               </li>
             </ul>
@@ -323,38 +343,34 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
       </SectionProfile>
       <SectionProfile>
         <CommonInner>
-          <SubTitle>what we offer</SubTitle>
-          <MainTitle>&lt;Our services/&gt;</MainTitle>
-          <Description>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum voluptates asperiores repudiandae vero aliquid earum alias voluptatum ex quas. Sint qui ad placeat quia
-            pariatur totam facilis laboriosam earum tenetur?
+          <SubTitle>What I have done</SubTitle>
+          <MainTitle>&lt;Doing/&gt;</MainTitle>
+          <Description $margin="60px 0">
+            React와 Vue를 활용해 확장 가능한 컴포넌트를 개발하고, 브랜딩 및 프로모션 페이지를 반응형으로 퍼블리싱한 경험이 있습니다
+            <br />
+            또한, 자사 사이트를 구축하고 운영하며, 디자인과 기획을 반영한 최적의 웹 경험을 제공해왔습니다
+            <br />
+            원활한 협업을 통해 재사용성과 사용자 경험을 고려한 웹 솔루션을 구현하는 것을 목표로 합니다
           </Description>
           <LayoutImageWrapper>
             <div>
-              <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_01.jpg" alt="" />
-              <SubTitle>what we offer</SubTitle>
+              <img src="/assets/mockup/home_mockup_01.jpeg" alt="" />
+              <SubTitle $margin="20px 0">Experience</SubTitle>
               <Description>
-                어쩌구 저쩌궁 <br />
-                어쩌구 저쩌궁 <br />
+                확장 가능한 컴포넌트를 개발하고, 브랜딩 및 프로모션 페이지를 반응형으로 퍼블리싱한 경험이 있습니다
+                <br />
+                또한, 자사 사이트를 구축하고 운영하며, 디자인과 기획을 반영한 최적의 웹 경험을 제공해왔습니다
               </Description>
             </div>
             <div>
-              <img src="https://static.toss.im/assets/homepage/newtossim/section2_2_insu_02.jpg" alt="" />
-              <SubTitle>what we offer</SubTitle>
-              <Description $margin="20px" $padding="100px">
-                어쩌구 저쩌궁 <br />
-                어쩌구 저쩌궁 <br />
-              </Description>
+              <img src="/assets/mockup/home_mockup_02.jpeg" alt="" />
+              <SubTitle $margin="20px 0">Goal</SubTitle>
+              <Description>원활한 협업을 통해 재사용성과 사용자 경험을 고려한 웹 솔루션을 구현하는 것을 목표로 합니다</Description>
             </div>
           </LayoutImageWrapper>
-          <MainTitle>&lt;Career/&gt;</MainTitle>
-          <BlockBox>
-            <div>글라이드</div>
-            <div>패스트파이브</div>
-          </BlockBox>
         </CommonInner>
       </SectionProfile>
-
+      <Divider />
       {/* section contact */}
       <CommonInner>
         <MainTitle as="h3" $align="center">
@@ -381,25 +397,6 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
           </Button>
         </LayoutFlex>
       </CommonInner>
-      {/* section tmp */}
-      <section>
-        <div>
-          <img src="https://static.toss.im/assets/homepage/newtossim/section4_device.jpg" alt="" />
-        </div>
-        <CommonInner>
-          <h1>
-            AAA
-            <br />
-            BBB
-            <br />
-            CCC
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto alias in. Delectus quasi laudantium non nesciunt, est accusantium harum iste ipsa
-            reprehenderit ut aliquam quae impedit, magnam optio sunt.
-          </p>
-        </CommonInner>
-      </section>
     </>
   );
 }

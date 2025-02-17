@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import PageTrantition from "@/components/common/PageTrantition";
 import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex } from "@/styled/CommonStyles";
@@ -143,7 +144,7 @@ export default function Experience() {
           {filteredArr.map((item, i) => {
             return (
               <WorkItem key={i} as="li">
-                <a href="#">
+                <Link to={`/experience/${i}`}>
                   <WorkItemThumb>
                     <img src="https://picsum.photos/300/300 " alt="" />
                   </WorkItemThumb>
@@ -154,7 +155,7 @@ export default function Experience() {
                       {item.desc}
                     </p>
                   </WorkItemText>
-                </a>
+                </Link>
               </WorkItem>
             );
           })}
