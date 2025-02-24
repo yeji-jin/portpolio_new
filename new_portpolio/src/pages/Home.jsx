@@ -9,6 +9,7 @@ import { CommonComponents } from "@/App";
 import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex, Divider } from "@/styled/CommonStyles";
 import RoundLayout from "@/components/RoundLayout";
 import BlockBox from "@/components/BlockBox";
+import ImageMarquee from "@/components/ImageMarquee";
 gsap.registerPlugin(ScrollTrigger);
 
 const MainVisualWrapper = styled.div`
@@ -214,7 +215,9 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
     ScrollTrigger.create({
       trigger: RoundLayoutRef.current,
       start: "top center",
-      end: "bottom bottom",
+      // end: "bottom bottom",
+      end: "+=2000",
+      pin: true,
       animation: gsap.from(RoundLayoutRef.current, {
         ease: "none",
         rotation: 360,
@@ -383,13 +386,13 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
         </MainTitle>
         <img src="https://static.toss.im/3d/tossmobile-benefit-2.png" alt="" />
         <LayoutFlex $gap={30}>
-          <Button>
+          <Button $isLink>
             <a href="mailto:dpwl322@naver.com">
               <MdEmail />
               <span>E-mail</span>
             </a>
           </Button>
-          <Button>
+          <Button $isLink>
             <a href="tel:010-0000-0000">
               <FaPhone />
               <span>Call</span>
@@ -397,6 +400,7 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
           </Button>
         </LayoutFlex>
       </CommonInner>
+      <ImageMarquee />
     </>
   );
 }

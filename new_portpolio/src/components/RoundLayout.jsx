@@ -34,18 +34,18 @@ const layoutList = [
 const Container = styled.div`
   position: relative;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 200px;
   min-height: 200px;
   width: 50vw;
   height: 50vw;
   max-width: 500px;
   max-height: 500px;
+  transform-origin: center center;
   border-radius: 50%;
   border: 2px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-origin: center center;
 `;
 
 const CircleItem = styled.img`

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex } from "@/styled/CommonStyles";
+import ImageMarquee from "@/components/ImageMarquee";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutWrapper = styled.section`
@@ -221,6 +222,8 @@ export default function About() {
             <br />
           </MainTitle>
         </LayoutFlex>
+        <ImageMarquee />
+        {/* BrowserFrame */}
       </AboutWrapper>
     </>
   );

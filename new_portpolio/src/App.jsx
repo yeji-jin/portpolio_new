@@ -12,6 +12,7 @@ import Notfound from "@/pages/Notfound";
 import Footer from "@/components/common/Footer";
 import Button from "@/components/common/Button";
 import StyleGuide from "@/pages/StyleGuide";
+import Test from "@/pages/Test";
 import "./App.css";
 
 export const CommonComponents = {
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home triggerAnimation={triggerAnimation} setTriggerAnimation={setTriggerAnimation} setIsOverflowHidden={setIsOverflowHidden} />} />
           <Route path="/guide" element={<StyleGuide />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/experience/:id" element={<Detail />} />
           <Route path="/about" element={<About />} />

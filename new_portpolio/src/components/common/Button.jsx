@@ -61,16 +61,19 @@ const StyledButton = styled.div`
   }
   > a {
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 12px 24px;
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
+    gap: 8px;
+    font-size: 16px;
   }
 `;
 
 const Button = ({ children, text, onClick, ...styleProps }) => {
   const isLink = children && children.type === Link; // children이 Link인지 확인
+  console.log(children && children.type, "children.type");
   return (
     <>
       <StyledButton onClick={onClick} $isLink={isLink} {...styleProps}>
