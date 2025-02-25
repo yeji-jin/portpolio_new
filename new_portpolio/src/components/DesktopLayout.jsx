@@ -23,7 +23,6 @@ const ImageWrapper = styled.div`
   > img {
     animation: image_slide_y 10s ease-in-out alternate infinite;
   }
-
   @keyframes image_slide_y {
     from {
       transform: translateY(0);
@@ -34,7 +33,8 @@ const ImageWrapper = styled.div`
   }
 `;
 const ImageThumbsWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-content: center;
   gap: 24px;
@@ -43,23 +43,24 @@ const ImageThumbsWrapper = styled.div`
 `;
 const ImageThumb = styled.div`
   overflow: hidden;
-  flex: 1;
   height: 120px;
   cursor: pointer;
 `;
 
 export default function DesktopLayout() {
   const [frameImg, setFrameImg] = useState("frame");
-  const thumbsArr = ["frame", "event", "frame", "event"];
-  const onClickThumb = (curruntImg) => {
+  const [animationIdx, setAnimationIdx] = useState(0);
+  const thumbsArr = ["frame", "event", "frame", "event", "frame", "event", "frame", "event"];
+  const onClickThumb = (curruntImg, i) => {
     setFrameImg(curruntImg);
+    setAnimationIdx(i);
   };
 
   return (
     <>
       <DesktopWrapper>
         <BrowserFrame>
-          <ImageWrapper>
+          <ImageWrapper key={animationIdx}>
             <img src={`/assets/fastfive/${frameImg}.jpg`} alt="" />
           </ImageWrapper>
         </BrowserFrame>
@@ -69,7 +70,7 @@ export default function DesktopLayout() {
         {thumbsArr.map((thumb, i) => {
           return (
             <>
-              <ImageThumb key={i} onClick={() => onClickThumb(thumb)}>
+              <ImageThumb key={i} onClick={() => onClickThumb(thumb, i)}>
                 <img src={`/assets/fastfive/${thumb}.jpg`} alt="" />
               </ImageThumb>
             </>

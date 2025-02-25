@@ -30,7 +30,14 @@ const layoutList = [
 //   border-radius: 50%;
 //   transform: ${({ angle }) => `rotate(${angle}deg) translate(120px) rotate(-${angle}deg)`};
 // `;
-
+const ContainerWrapper = styled.div`
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: green;
+`;
 const Container = styled.div`
   position: relative;
   margin: 0 auto;
@@ -54,16 +61,19 @@ const CircleItem = styled.img`
   height: auto;
   border-radius: 50%;
   transform: ${({ $angle }) => `rotate(${$angle}deg) translate(clamp(100px, 25vw, 250px)) rotate(-${$angle}deg)`};
+  transform-origin: center center;
 `;
 
 const RoundLayout = forwardRef((props, ref) => {
   return (
-    <Container ref={ref}>
-      {layoutList.map((src, index) => {
-        const angle = (360 / layoutList.length) * index;
-        return <CircleItem key={index} src={src} alt={`item-${index}`} $angle={angle} />;
-      })}
-    </Container>
+    <ContainerWrapper>
+      <Container ref={ref}>
+        {layoutList.map((src, index) => {
+          const angle = (360 / layoutList.length) * index;
+          return <CircleItem key={index} src={src} alt={`item-${index}`} $angle={angle} />;
+        })}
+      </Container>
+    </ContainerWrapper>
   );
 });
 // export default RoundLayout((props, ref) => {

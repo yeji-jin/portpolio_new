@@ -45,18 +45,18 @@ export default function PageTrantition({ text, $bg, onComplete }) {
       .fromTo(
         PageNameRef.current,
         {
-          y: "-50%",
+          y: "-30%",
           opacity: 0,
           delay: 0.5,
         },
         {
-          y: "-100%",
+          y: "-50%",
           opacity: 1,
           // duration: 30,
         }
       )
       .to(PageNameRef.current, {
-        y: "-200%",
+        y: "-100%",
         opacity: 0,
         duration: 0.25,
       })

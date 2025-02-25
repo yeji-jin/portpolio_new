@@ -99,6 +99,7 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
   const MainTitleRef = useRef();
   const VisualDescRef = useRef();
   const SectionDescRef = useRef();
+  const RoundLayoutWrapper = useRef();
   const RoundLayoutRef = useRef();
   const location = useLocation();
 
@@ -212,20 +213,22 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
     });
 
     //RoundLayoutRef
+    const RoundLayoutRef_tl = gsap.timeline().from(RoundLayoutRef.current, {
+      ease: "none",
+      rotation: 360,
+      opacity: 0,
+      scale: 1.2,
+    });
+
     ScrollTrigger.create({
-      trigger: RoundLayoutRef.current,
-      start: "top center",
-      // end: "bottom bottom",
-      end: "+=2000",
+      trigger: RoundLayoutWrapper.current,
+      start: "top top",
+      end: "+=1000",
+      // end: `bottom center`,
       pin: true,
-      animation: gsap.from(RoundLayoutRef.current, {
-        ease: "none",
-        rotation: 360,
-        opacity: 0,
-        scale: 1.2,
-      }),
+      animation: RoundLayoutRef_tl,
       scrub: true,
-      // markers: true,
+      markers: true,
     });
   }, []);
 
@@ -321,8 +324,12 @@ export default function Main({ triggerAnimation, setTriggerAnimation, setIsOverf
             <br />
             원활한 협업을 통해 재사용성과 사용자 경험을 고려한 웹 솔루션을 구현하는 것을 목표로 합니다
           </Description>
-          <CardContainer>
+          {/* RoundLayout */}
+          <div ref={RoundLayoutWrapper}>
             <RoundLayout ref={RoundLayoutRef} />
+          </div>
+          {/* CardContainer */}
+          <CardContainer>
             <ul>
               <li>
                 <h5>주요업무</h5>

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonInner, SubTitle, MainTitle, SectionTitle, Description, DiagramCircle, DiagramSqueare, InfoBox, LayoutFlex } from "@/styled/CommonStyles";
 import ImageMarquee from "@/components/ImageMarquee";
+import DesktopLayout from "@/components/DesktopLayout";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutWrapper = styled.section`
@@ -82,6 +83,7 @@ export default function About() {
         .timeline()
         .to(iPad.current, {
           width: "100%",
+          height: "100vh",
           borderRadius: 0,
         })
         .to(
@@ -212,18 +214,25 @@ export default function About() {
             </StoryCard>
           ))}
         </StorySection>
+        {/* DesktopLayout */}
         <LayoutFlex $direction="column">
           <MainTitle $margin="60px 0 30px">
-            어쩌궁
+            데스크탑
             <br />
-            어쩌궁
+            부터
+          </MainTitle>
+        </LayoutFlex>
+        <DesktopLayout />
+        {/* mobile */}
+        <LayoutFlex $direction="column">
+          <MainTitle $margin="60px 0 30px">
+            모바일
             <br />
-            어쩌궁
+            까지
             <br />
           </MainTitle>
         </LayoutFlex>
         <ImageMarquee />
-        {/* BrowserFrame */}
       </AboutWrapper>
     </>
   );
