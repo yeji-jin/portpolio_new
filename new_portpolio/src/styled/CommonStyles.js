@@ -104,3 +104,18 @@ export const Divider = styled.div`
   ${(props) => setSpacing(props)}
   border-top: 1px solid #eee;
 `;
+export const MobileDevice = styled.div`
+  padding: 22px 20px;
+  width: 375px;
+  height: 640px;
+  background: #000;
+  border: 2px solid #242424;
+  border-radius: 30px;
+  box-shadow: 0 80px 99px rgba(0, 0, 0, 0.7);
+`;
+export const MobileDeviceInner = styled.div`
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+  background: #fff;
+`;

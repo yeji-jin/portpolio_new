@@ -87,6 +87,13 @@ export default function About() {
           borderRadius: 0,
         })
         .to(
+          "header",
+          {
+            backgroundColor: "transparent",
+          },
+          "<"
+        )
+        .to(
           AboutWrapperRef.current,
           {
             background: "green",
@@ -216,7 +223,7 @@ export default function About() {
         </StorySection>
         {/* DesktopLayout */}
         <LayoutFlex $direction="column">
-          <MainTitle $margin="60px 0 30px">
+          <MainTitle $margin="60px 0 30px" $align="center">
             데스크탑
             <br />
             부터
@@ -225,7 +232,7 @@ export default function About() {
         <DesktopLayout />
         {/* mobile */}
         <LayoutFlex $direction="column">
-          <MainTitle $margin="60px 0 30px">
+          <MainTitle $margin="60px 0 30px" $align="center">
             모바일
             <br />
             까지
